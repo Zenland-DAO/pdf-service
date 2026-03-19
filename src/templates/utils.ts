@@ -79,8 +79,8 @@ const BASE_URL = 'https://zen.land';
  */
 export function generateUrls(escrowAddress: string): GeneratedUrls {
   return {
-    acceptUrl: `${BASE_URL}/accept/${escrowAddress}`,
-    verifyUrl: `${BASE_URL}/verify?contract=${escrowAddress}`,
+    acceptUrl: `${BASE_URL}/escrows/${escrowAddress}`,
+    verifyUrl: `${BASE_URL}/verify`,
     viewUrl: `${BASE_URL}/escrows/${escrowAddress}`,
   };
 }
