@@ -49,6 +49,7 @@ export interface SignEscrowPdfMetadataOptions {
 }
 
 const SEVEN_DAYS = 7 * 24 * 60 * 60;
+const ONE_HOUR = 60 * 60;
 
 export function buildUnsignedEscrowPdfMetadataV1(data: EscrowData): ZenlandEscrowPdfUnsignedMetadataV1 {
   return {
@@ -69,7 +70,7 @@ export function buildUnsignedEscrowPdfMetadataV1(data: EscrowData): ZenlandEscro
       amount: data.amount,
       timeouts: {
         buyerProtectionTime: data.buyerProtectionTime,
-        sellerAcceptTime: data.sellerAcceptTime ?? SEVEN_DAYS,
+        sellerAcceptTime: data.sellerAcceptTime ?? ONE_HOUR,
         agentResponseTime: data.agentResponseTime ?? SEVEN_DAYS,
       },
     },

@@ -127,7 +127,7 @@ export function generatePage2(props: Page2Props): string {
             Deadline: ${dates.acceptanceDeadline}
           </div>
           <p class="deadline-text">
-            (${dates.acceptanceDays} days from PDF generation time; actual on-chain deadline is from escrow creation)
+            (${dates.acceptancePeriod} from PDF generation time; actual on-chain deadline is from escrow creation)
           </p>
         </div>
 

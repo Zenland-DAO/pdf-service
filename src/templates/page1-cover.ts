@@ -72,7 +72,7 @@ export function generatePage1(props: Page1Props): string {
           </div>
           <div class="detail-row">
             <span class="detail-label">Acceptance Period</span>
-            <span class="detail-value">${dates.acceptanceDays} days</span>
+            <span class="detail-value">${dates.acceptancePeriod}</span>
           </div>
           <div class="detail-row">
             <span class="detail-label">Buyer Protection Period</span>

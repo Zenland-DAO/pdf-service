@@ -114,7 +114,7 @@ app.post('/api/generate', async (req, res) => {
       isLocked: body.isLocked ?? false,
       createdAt: body.createdAt || Math.floor(Date.now() / 1000),
       buyerProtectionTime: body.buyerProtectionTime || 7 * 24 * 60 * 60, // 7 days default
-      sellerAcceptTime: body.sellerAcceptTime || 7 * 24 * 60 * 60, // 7 days default
+      sellerAcceptTime: body.sellerAcceptTime || 60 * 60, // 1 hour default (ZIP-002)
       agentResponseTime: body.agentResponseTime || 7 * 24 * 60 * 60, // 7 days default
       language: body.language || 'en',
     };
@@ -169,7 +169,7 @@ app.post('/preview/escrow', async (req, res) => {
       isLocked: body.isLocked ?? false,
       createdAt: body.createdAt || Math.floor(Date.now() / 1000),
       buyerProtectionTime: body.buyerProtectionTime || 14 * 24 * 60 * 60, // 14 days
-      sellerAcceptTime: body.sellerAcceptTime || 7 * 24 * 60 * 60, // 7 days
+      sellerAcceptTime: body.sellerAcceptTime || 60 * 60, // 1 hour (ZIP-002)
       agentResponseTime: body.agentResponseTime || 7 * 24 * 60 * 60, // 7 days
       language: body.language || 'en',
     };

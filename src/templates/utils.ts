@@ -46,6 +46,24 @@ export function secondsToDays(seconds: number): number {
 }
 
 const SEVEN_DAYS = 7 * 24 * 60 * 60;
+const ONE_HOUR = 60 * 60;
+
+/**
+ * Format a duration in seconds to a human-readable string.
+ * Examples: 3600 → "1 hour", 86400 → "1 day", 604800 → "7 days"
+ */
+export function formatDuration(seconds: number): string {
+  if (seconds < 60 * 60) {
+    const minutes = Math.floor(seconds / 60);
+    return minutes === 1 ? '1 minute' : `${minutes} minutes`;
+  }
+  if (seconds < 24 * 60 * 60) {
+    const hours = Math.floor(seconds / (60 * 60));
+    return hours === 1 ? '1 hour' : `${hours} hours`;
+  }
+  const days = Math.floor(seconds / (24 * 60 * 60));
+  return days === 1 ? '1 day' : `${days} days`;
+}
 
 /**
  * Compute all relevant dates from escrow data
@@ -55,15 +73,15 @@ export function computeDates(data: EscrowData): ComputedDates {
 
   // NOTE: acceptance window is separate from buyerProtectionTime.
   // On-chain: sellerAcceptTimeSnapshot is snapshotted from the Factory.
-  // For now we default to 7 days.
-  const sellerAcceptTime = data.sellerAcceptTime ?? SEVEN_DAYS;
+  // Default: 1 hour (ZIP-002).
+  const sellerAcceptTime = data.sellerAcceptTime ?? ONE_HOUR;
   const acceptanceDeadlineTimestamp = createdTimestamp + sellerAcceptTime;
 
   return {
     createdDate: formatDate(createdTimestamp),
     createdDateTime: formatDateTime(createdTimestamp),
     acceptanceDeadline: formatDate(acceptanceDeadlineTimestamp),
-    acceptanceDays: secondsToDays(sellerAcceptTime),
+    acceptancePeriod: formatDuration(sellerAcceptTime),
     protectionDays: secondsToDays(data.buyerProtectionTime),
   };
 }

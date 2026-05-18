@@ -50,7 +50,7 @@ export interface ComputedDates {
   createdDate: string;
   createdDateTime: string;
   acceptanceDeadline: string;
-  acceptanceDays: number;
+  acceptancePeriod: string;
   protectionDays: number;
 }
 

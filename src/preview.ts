@@ -54,7 +54,7 @@ const sampleData: EscrowData = {
   // Timestamps
   createdAt: Math.floor(Date.now() / 1000),
   buyerProtectionTime: 7 * 24 * 60 * 60, // 7 days
-  sellerAcceptTime: 3 * 24 * 60 * 60, // 3 days
+  sellerAcceptTime: 60 * 60, // 1 hour (ZIP-002)
   
   // Language
   language: 'en',
